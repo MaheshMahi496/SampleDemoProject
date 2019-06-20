@@ -14,7 +14,6 @@ node {
       git branch: 'master',
       credentialsId: '79715904-7926-40c1-9e75-dea587766745',
       url: 'https://github.com/MaheshMahi496/SampleDemoProject.git'
-	  bat 'D:/SampleDemoProject/Gitfile.bat'
 	  
    }
    stage('Clean') {
@@ -46,12 +45,12 @@ node {
    stage('Deploy') {
       if (isUnix()) {
          echo "Deployment Started"
-            withCredentials([usernamePassword(credentialsId: 'c9cb559a-7c9a-43ce-b1bc-d8aa2dfef0bb', passwordVariable: 'ANYPOINT_PASSWORD', usernameVariable: 'ANYPOINT_USERNAME')]) {
+            withCredentials([usernamePassword(credentialsId: 'd26ec363-344f-461b-a1aa-cfd53c565995', passwordVariable: 'ANYPOINT_PASSWORD', usernameVariable: 'ANYPOINT_USERNAME')]) {
                 sh 'mvn deploy -DmuleDeploy -Denv=$ENVIRONMENT -Danypoint.username=${ANYPOINT_USERNAME} -Danypoint.password=${ANYPOINT_PASSWORD}'
             }
       } else {
             echo "Deployment Started"
-            withCredentials([usernamePassword(credentialsId: 'c9cb559a-7c9a-43ce-b1bc-d8aa2dfef0bb', passwordVariable: 'ANYPOINT_PASSWORD', usernameVariable: 'ANYPOINT_USERNAME')]) {
+            withCredentials([usernamePassword(credentialsId: 'd26ec363-344f-461b-a1aa-cfd53c565995', passwordVariable: 'ANYPOINT_PASSWORD', usernameVariable: 'ANYPOINT_USERNAME')]) {
                 //bat "mvn deploy -DmuleDeploy -Denv=$ENVIRONMENT -Danypoint.username=${ANYPOINT_USERNAME} -Danypoint.password=${ANYPOINT_PASSWORD}"
             }
       }
